@@ -1,0 +1,2 @@
+requests==2.21.0
+iqoption==6.8.9.1
