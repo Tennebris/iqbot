@@ -28,8 +28,11 @@ class interface:
 						payload['resultado'] = item
 					elif i == 5:
 						payload['direcao'] = item
+					elif i == 6:
+						payload['data_operacao'] = item
 				requests.post('http://botiqoption.herokuapp.com/set-data',data=payload)
-			conn.commit()
 			up = conn.cursor()
 			up.execute("INSERT INTO upload('updateToday','date') VALUES(?,?)",(1,str(datetime.now()).split(' ')[0]))
+			conn.commit()
+			conn.close()
 			print('LOG SALVOS')

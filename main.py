@@ -2,6 +2,7 @@ import json
 import sys
 import time
 import datetime
+import requests
 import random
 import sqlite3
 from iqoptionapi.stable_api import IQ_Option
@@ -37,8 +38,9 @@ def main():
 
 	tops = iqconfig.iq.getRank(api)
 	api.subscribe_live_deal(name,active,typeOP, bufferSize)
-	try: 
+	try:
 		while True:
+			requests.get('https://botiqopt.herokuapp.com')
 			operacoes = api.get_live_deal(name,active,typeOP)
 			if(time.strftime('%H') == '00' and int(time.strftime('%M')) >= 0):
 				upload.sendForAPI()
