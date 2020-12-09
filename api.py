@@ -1,4 +1,3 @@
-from openpyxl import Workbook as wb
 import sqlite3
 import db
 import json
