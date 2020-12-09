@@ -10,7 +10,7 @@ import iqconfig
 import db
 import api as upload
 
-api = IQ_Option('','')
+api = IQ_Option('dev.alysson@gmail.com','nephilin890')
 api.connect()
 
 while True:
