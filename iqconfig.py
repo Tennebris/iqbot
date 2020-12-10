@@ -21,10 +21,10 @@ class iq:
 			if status:
 				lucro = api.check_win_v3(opId)
 				saida = ("Win" if lucro > 0 else "Loss")
-				print('ok')
+				#print('ok')
 				return (True,('Resultado: ',str(lucro),' ',saida))
 			else:
-				print('not ok')
+				#print('not ok')
 				return ((False),opId)
 		except Exception as e:
 			print(str(e))

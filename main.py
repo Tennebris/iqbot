@@ -78,7 +78,7 @@ def main():
 						if db.db.insert(c,(array[3],nome,rankPosition,array[0],result[3],array[2],str(horaOP))):
 							conn.commit()
 							conn.close()						
-							#print('Gravado no DB \n')
+							print('Gravado no DB \n')
 						
 						prev = operacoes[0]['user_id']
 				else:
