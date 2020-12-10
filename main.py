@@ -8,7 +8,6 @@ import sqlite3
 from iqoptionapi.stable_api import IQ_Option
 
 import iqconfig
-import db
 import api as upload
 
 api = IQ_Option('dev.alysson@gmail.com','nephilin890')
@@ -48,7 +47,9 @@ def main():
 			operacoes = api.get_live_deal(name,active,typeOP)
 
 			if len(operacoes) > 0 and operacoes[0]['user_id'] != prev:
-				#print(json.dumps(operacoes[0],indent=1))	
+				#horaOP = str(datetime.datetime.now()).split('.')[0]
+				#print(json.dumps(operacoes[0],indent=1))
+				#upload.interface.upload((operacoes[0]['user_id'],operacoes[0]['name'],active,'Win',operacoes[0]['direction'],str(horaOP),1))	
 				if len(tops['userID']) > 0:
 					if operacoes[0]['user_id'] in tops['userID']:
 						rankPosition = int()
@@ -74,7 +75,7 @@ def main():
 						else:
 							nome = array[5]
 
-						print(upload.interface.upload((array[3],nome,rankPosition,array[0],result[3],array[2],str(horaOP))))
+						upload.interface.upload((array[3],nome,array[0],result[3],array[2],str(horaOP),rankPosition))
 						
 						prev = operacoes[0]['user_id']
 				else:
