@@ -14,7 +14,7 @@ class interface:
 		if not one:
 			trades = conn.cursor()
 			trades.execute('SELECT * FROM trades')
-			saida = c.fetchall()
+			saida = trades.fetchall()
 			payload = {}
 			for linha in saida:
 				for item,i in zip(linha,range(1,6)):
