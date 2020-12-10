@@ -5,9 +5,10 @@ import requests
 from datetime import datetime
 
 class interface:
-	conn = sqlite3.connect('db/database.db')
+	#conn = sqlite3.connect('db/database.db')
 
 	def sendForAPI():
+		conn = sqlite3.connect('db/database.db')
 		check = conn.cursor()
 		check.execute("SELECT updateToday FROM upload WHERE date='?'",str(datetime.now()).split(' ')[0])
 		one = check.fetchone()
