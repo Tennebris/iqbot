@@ -1,5 +1,5 @@
 import sqlite3
-import db
+#import db
 import json
 import requests
 from datetime import datetime
