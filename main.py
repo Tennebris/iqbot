@@ -14,8 +14,6 @@ import api as upload
 api = IQ_Option('dev.alysson@gmail.com','nephilin890')
 api.connect()
 
-upload.sendForAPI()
-
 while True:
 	if api.check_connect() == False:
 		print("Erro ao conectar!")
