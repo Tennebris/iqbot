@@ -10,7 +10,7 @@ class interface:
 	def sendForAPI():
 		conn = sqlite3.connect('db/database.db')
 		check = conn.cursor()
-		check.execute("SELECT updateToday FROM upload WHERE date='?'",str(datetime.now()).split(' ')[0])
+		check.execute("SELECT updateToday FROM upload WHERE date='?'",(str(datetime.now()).split(' ')[0]))
 		one = check.fetchone()
 		if not one:
 			trades = conn.cursor()
