@@ -22,6 +22,8 @@ while True:
 		print("Conectado com sucesso!")
 		break
 
+print()
+
 def main():
 	opens = []
 
@@ -35,15 +37,15 @@ def main():
 	typeOP = 'turbo' # PT1M
 	bufferSize = 10
 	prev = 0
+	print('ATIVO:',active)	
 
 	tops = iqconfig.iq.getRank(api)
 	api.subscribe_live_deal(name,active,typeOP, bufferSize)
+
 	try:
 		while True:
 			requests.get('https://botiqopt.herokuapp.com')
 			operacoes = api.get_live_deal(name,active,typeOP)
-			if(time.strftime('%H') == '00' and int(time.strftime('%M')) >= 0):
-				upload.sendForAPI()
 
 			if len(operacoes) > 0 and operacoes[0]['user_id'] != prev:
 				#print(json.dumps(operacoes[0],indent=1))	
@@ -70,15 +72,9 @@ def main():
 						if len(array) > 6:
 							nome = array[5]+" "+array[6]
 						else:
-							nome = array[5]			
-						
-						conn = sqlite3.connect('db/database.db')
-						c = conn.cursor()
-						
-						if db.db.insert(c,(array[3],nome,rankPosition,array[0],result[3],array[2],str(horaOP))):
-							conn.commit()
-							conn.close()						
-							print('Gravado no DB \n')
+							nome = array[5]
+
+						print(upload.interface.upload((array[3],nome,rankPosition,array[0],result[3],array[2],str(horaOP))))
 						
 						prev = operacoes[0]['user_id']
 				else:
