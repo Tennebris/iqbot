@@ -36,6 +36,3 @@ class interface:
 			conn.commit()
 			conn.close()
 			print('LOG SALVOS')
-
-
-interface.sendForAPI()
